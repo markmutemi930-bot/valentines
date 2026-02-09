@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ff6fae, #ffc3d1);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Center container */
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Photo */
+.photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+}
+
+/* Headings */
+h1 {
+    font-size: 2.6em;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 1.15em;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+/* Buttons */
+button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 12px;
+}
+
+#yes {
+    background: #28a745;
+    color: white;
+}
+
+#no {
+    background: #dc3545;
+    color: white;
+    position: absolute;
+}
+
+/* Surprise message */
+#surprise {
+    display: none;
+    font-size: 1.4em;
+    margin-top: 20px;
+    animation: fadeIn 2s forwards;
+}
+
+/* Floating items */
+.float {
+    position: fixed;
+    bottom: -20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Heart beat */
+.heart {
+    font-size: 80px;
+    animation: beat 1s infinite;
+}
+.heart:hover {
+    animation: beat 0.5s infinite;
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<button onclick="document.getElementById('music').play()"
+style="position:fixed; top:10px; right:10px;">
+Play Music 🎵
+</button>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <img src="her.jpg" class="photo">
+
+    <div class="heart">❤️</div>
+
+    <h1>Melvin Chepkurui 💖</h1>
+
+    <p>
+    I really enjoy having you around.<br>
+    There’s no one I’d rather spend it with.<br>
+    If it ain’t you… it’s nobody.
+    </p>
+
+    <h2>Will you be my Valentine? 🌹</h2>
+
+    <button id="yes" onclick="yesClicked()">YES 💘</button>
+    <button id="no" onmouseover="moveNo()">NO 🙈</button>
+
+    <div id="surprise">
+        ✨ You make my days brighter and my heart softer ✨<br><br>
+        I choose you today and always ❤️
+    </div>
+</div>
+
+<script>
+/* Move NO button */
+function moveNo() {
+    const no = document.getElementById("no");
+    no.style.top = Math.random() * (window.innerHeight - 60) + "px";
+    no.style.left = Math.random() * (window.innerWidth - 120) + "px";
+}
+
+/* YES clicked */
+function yesClicked() {
+    document.getElementById("surprise").style.display = "block";
+    explodeHearts();
+    alert("She clicked YES 💖"); // this is how YOU know
+}
+
+/* Floating hearts, roses, sparkles */
+function createFloat() {
+    const el = document.createElement("div");
+    el.className = "float";
+    const items = ["❤️", "🌹", "✨"];
+    el.innerHTML = items[Math.floor(Math.random() * items.length)];
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 6000);
+}
+setInterval(createFloat, 300);
+
+/* Heart explosion */
+function explodeHearts() {
+    for (let i = 0; i < 30; i++) {
+        const h = document.createElement("div");
+        h.innerHTML = "❤️";
+        h.style.position = "fixed";
+        h.style.left = "50%";
+        h.style.top = "50%";
+        h.style.fontSize = "20px";
+        h.style.transform = `translate(${Math.random()*400-200}px, ${Math.random()*400-200}px)`;
+        h.style.transition = "all 2s ease-out";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+    }
+}
+</script>
+
+</body>
+</html><img src="her.jpg" class="photo">
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
